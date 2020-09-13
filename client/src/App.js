@@ -39,7 +39,9 @@ const App = () => {
         </AlertState>
       </ContactState>
     </AuthState>
+
   );
+
 };
 
 export default App;
