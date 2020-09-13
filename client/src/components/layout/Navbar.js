@@ -2,20 +2,25 @@ import React, { Fragment, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/auth/authContext";
+import ContactContext from "../../context/contact/contactContex";
 
 const Navbar = ({ title, icon }) => {
   const authContext = useContext(AuthContext);
+  const contactContext = useContext(ContactContext);
 
   const { isAuthenticated, logoutUser, user } = authContext;
 
+  const { clearContacts } = contactContext;
+
   const onLogout = () => {
     logoutUser();
+    clearContacts();
   };
 
   const authLinks = (
     <Fragment>
       <li>
-        Welcome {" "}
+        Welcome{" "}
         {user &&
           user.name.charAt(0).toUpperCase() +
             user.name.slice(1) +
