@@ -14,6 +14,7 @@ router.post(
   "/",
   [
     check("name", "Please add a name").not().isEmpty(),
+    check("surname", "Please add a surname").not().isEmpty(),
     check("email", "Please add a valid email address").isEmail(),
     check(
       "password",
@@ -27,7 +28,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { name, email, password } = req.body;
+    const { name, surname, email, password } = req.body;
 
     try {
       let user = await User.findOne({ email });
@@ -38,6 +39,7 @@ router.post(
 
       user = new User({
         name,
+        surname,
         email,
         password,
       });

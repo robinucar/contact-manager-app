@@ -5,7 +5,8 @@ import ContactContext from "../../context/contact/contactContex";
 const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
   const { deleteContact, setCurrent, clearCurrent } = contactContext;
-  const { id, name, email, phone, type } = contact;
+  const { id, name, surname, email, phone, type } = contact;
+
 
   const onDelete = () => {
     deleteContact(id);
@@ -15,7 +16,8 @@ const ContactItem = ({ contact }) => {
   return (
     <div className="card bg-light">
       <h3 className="text-primary text-left">
-        {name}{" "}
+        {name.charAt(0).toUpperCase() + name.slice(1)} {surname.charAt(0).toUpperCase() + surname.slice(1)}
+        {""}
         <span
           style={{ float: "right" }}
           className={

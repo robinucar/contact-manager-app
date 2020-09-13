@@ -22,18 +22,19 @@ const Register = (props) => {
 
   const [user, setUser] = useState({
     name: "",
+    surname: "",
     email: "",
     password: "",
     password2: "",
   });
 
-  const { name, email, password, password2 } = user;
+  const { name, surname, email, password, password2 } = user;
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (name === "" || email === "" || password === "") {
+    if (name === "" || surname === "" || email === "" || password === "") {
       setAlert("Please enter all fields!..", "danger");
     } else if (password !== password2) {
       setAlert("Password do not match!..", "danger");
@@ -42,6 +43,7 @@ const Register = (props) => {
     } else {
       register({
         name,
+        surname,
         email,
         password,
       });
@@ -57,6 +59,15 @@ const Register = (props) => {
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input type="text" name="name" value={name} onChange={onChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="surname">Surname</label>
+          <input
+            type="text"
+            name="surname"
+            value={surname}
+            onChange={onChange}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email Address</label>
