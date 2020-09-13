@@ -57,6 +57,7 @@ const Login = (props) => {
             type="password"
             name="password"
             value={password}
+            autoComplete="on"
             onChange={onChange}
           />
         </div>
