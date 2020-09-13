@@ -15,8 +15,8 @@ const ContactItem = ({ contact }) => {
   return (
     <div className="card bg-light">
       <h3 className="text-primary text-left">
-        {name.charAt(0).toUpperCase() + name.slice(1)}{" "}
-        {surname.charAt(0).toUpperCase() + surname.slice(1)}
+        {name.replace(/\b\w/g, l => l.toUpperCase())}{" "}
+        {surname.replace(/\b\w/g, l => l.toUpperCase())}
         {""}
         <span
           style={{ float: "right" }}
